@@ -1,12 +1,26 @@
 INSERT INTO department (name)
-VALUES ("Sales"),
-       (""),
-       (""),
-       (""),
-       ("");
+VALUES ("Managment"),
+       ("Inventory"),
+       ("Quality"),
+       ("Marketimg"),
+       ("Human Resources");
 
-INSERT INTO role (title, salary, department_id_)
-VALUES (1, "Invetory Control Specialist"),
-       (2, "40,000"),
-       (1, ""),
+INSERT INTO role (title, salary, department_id)
+VALUES ("ICQA Manager", 121000, 1),
+       ("Invetory Control Specialist", 41000, 2),
+       ("Quality Assurance Specialist", 40000, 3),
+       ("Brand Ambassador", 25550.50, 4),
+       ("HR Manager", 113753, 4);
+
+
+
+INSERT INTO employee (role_id, first_name, last_name, manager_id )
+VALUES (1, "Fred", "Pearson",null),
+       (2, "Anthony", "Hrabowski",1),
+       (3, "Victor", "Grisson",1),
+       (4, "Logan", "Hrabowski",1),
+       (5, "Lola", "Black",1);
+    
+
+
        
