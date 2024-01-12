@@ -92,35 +92,78 @@ function viewEmployees() {
 }
 
 function addDepartment() {
+
+
+
+  inquirer.prompt([
+    {
+      type: 'Input',
+      name: 'addDepartment',
+      message: 'Which department do you want to add?',
+
+    }
+
+  ]).then(answer => {
+    // Handle the selected department
+    const selectedDepartment = answer.addDepartment;
+    console.log(selectedDepartment)
+
+    const sql = `INSERT INTO department (name) values (?)`;
+
+    db.query(sql, [selectedDepartment], (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      console.table(result);
+      start()
+    });
+
+
+  })
+}
+
+
+function addRole() {
   const sql = `SELECT * FROM department`;
 
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err);
     }
-    console.table(result);
-    start()
-  });
-
-  function addDepartment() {
+    const dptarray = result.map(dpt => ({ name: dpt.name, value: dpt.id }))
     inquirer.prompt([
       {
         type: 'list',
-        name: 'addDepartment',
-        message: 'Which department do you want to add?',
-        choices: ["Marketing", "Human Resources", "Maintenance", "IT", "Operations", "Finance"]
-      }
+        name: 'addRole',
+        message: 'What department is your role in?',
+        choices: dptarray
+      },
+      {
+        type: 'input',
+        name: 'title',
+        message: 'Whats the title for this role?',
+
+      },
+      {
+        type: 'input',
+        name: 'salary',
+        message: 'Whats the salary for this role?',
+
+      },
 
     ]).then(answer => {
       // Handle the selected department
-      const selectedDepartment = answer.addDepartment;
-      console.log(selectedDepartment)
+      const { addRole, title, salary } = answer;
+      const sql = `INSERT INTO role (title, salary, department_id) values (?,?,?)`;
 
-    })
+      db.query(sql, [title, salary, addRole], (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.table(result);
+        start()
+
+      })
+    });
+    });
   }
-  // Call the function to start the process
-  addDepartment();
-
-}
-
-
