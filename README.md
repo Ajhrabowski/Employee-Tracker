@@ -10,7 +10,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Questions?](#questions)
+- [Contact Info](#contact-info)
 
 ## License
 
@@ -20,6 +20,7 @@ Read more about MIT here:
 ## Description
 
 This is a project assignment for my MSU Fullstack Web Development Bootcamp. My task was to modify starter code to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
+https://drive.google.com/file/d/1AAiTjDPL7IIskWOObeobOxyTnyivdWvf/view
 
 ![Alt text](<Assets/Employee Tracker Screenshot.png>)
 
